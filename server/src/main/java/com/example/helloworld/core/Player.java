@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -28,9 +30,24 @@ public class Player {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "nat", nullable = false)
+    private String nat;
+    
     @Column(name = "pos", nullable = false)
     private String pos;
 
+    @Column(name = "height", nullable = false)
+    private Double height;
+
+    @Column(name = "weight", nullable = false)
+    private Double weight; 
+    
+    @Column(name = "dob", nullable = false)
+    private Date dob;    
+        
+    @Column(name = "birthplace", nullable = false)
+    private String birthplace;  
+    
     public Player() {
     }
 
@@ -52,7 +69,7 @@ public class Player {
         return name;
     }
 
-    public void setlName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -62,6 +79,46 @@ public class Player {
 
     public void setPos(String pos) {
         this.pos = pos;
+    }
+    
+    public String getNat() {
+        return nat;
+    }
+
+    public void setNat(String nat) {
+        this.nat = nat;
+    }
+
+    public Double getHeight() {
+        return height;
+    }
+
+    public void setHeight(Double height) {
+        this.height = height;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    public String getBirthplace() {
+        return birthplace;
+    }
+
+    public void setBirthplace(String birthplace) {
+        this.birthplace = birthplace;
+    }
+    
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
     }
 
     @Override

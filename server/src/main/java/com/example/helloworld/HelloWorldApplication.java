@@ -4,11 +4,9 @@ import com.example.helloworld.core.Player;
 import com.example.helloworld.core.Template;
 import com.example.helloworld.db.PlayerDAO;
 import com.example.helloworld.resources.HelloWorldResource;
+import com.example.helloworld.resources.PlayerResource;
+
 import io.dropwizard.Application;
-import io.dropwizard.assets.AssetsBundle;
-import io.dropwizard.auth.AuthDynamicFeature;
-import io.dropwizard.auth.AuthValueFactoryProvider;
-import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
 import io.dropwizard.configuration.SubstitutingSourceProvider;
 import io.dropwizard.db.DataSourceFactory;
@@ -16,10 +14,6 @@ import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import io.dropwizard.views.ViewBundle;
-import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
-
-import java.util.Map;
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
     public static void main(String[] args) throws Exception {
@@ -64,7 +58,6 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
         final Template template = configuration.buildTemplate();
 
         environment.jersey().register(new HelloWorldResource(template));
-
-        // TODO add your resources here
+        environment.jersey().register(new PlayerResource(dao));
     }
 }
